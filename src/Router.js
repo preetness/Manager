@@ -20,6 +20,10 @@ const RouterComponent = () => {
             key="employeeList"
             component={EmployeeList}
             title="Employees"
+            rightTitle="Add"
+            onRight={() => {
+              console.log('Right!');
+            }}
           />
         </Scene>
       </Scene>
