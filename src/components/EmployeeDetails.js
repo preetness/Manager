@@ -8,7 +8,11 @@ class EmployeeDetails extends Component {
   onButtonPress() {
     const { name, phone, shift } = this.props;
 
-    this.props.employeeDetails({ name, phone, shift });
+    this.props.employeeDetails({
+      name,
+      phone,
+      shift: shift || 'Not currently scheduled.'
+    });
   }
 
   render() {
