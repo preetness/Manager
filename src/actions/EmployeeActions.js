@@ -1,4 +1,5 @@
 import { EMPLOYEE_UPDATE } from './types';
+import { Actions } from 'react-native-router-flux';
 import firebase from 'firebase';
 
 export const employeeUpdate = ({ prop, value }) => {
@@ -10,8 +11,11 @@ export const employeeUpdate = ({ prop, value }) => {
 
 export const employeeDetails = ({ name, phone, shift }) => {
   const { currentUser } = firebase.auth();
-  firebase
-    .database()
-    .ref(`/users/${currentUser.uid}/employees`)
-    .push({ name, phone, shift });
+  return () => {
+    firebase
+      .database()
+      .ref(`/users/${currentUser.uid}/employees`)
+      .push({ name, phone, shift })
+      .then(() => Actions.pop());
+  };
 };
